@@ -36,7 +36,7 @@ function parseVisibleItems(chart, handler) {
 		meta = chart.getDatasetMeta(i);
 		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
 			var element = meta.data[j];
-			if (element && !element._view.skip) {
+			if (element && element._view && !element._view.skip) {
 				handler(element);
 			}
 		}
@@ -127,7 +127,7 @@ function indexMode(chart, e, options) {
 			var element = meta.data[items[0]._index];
 
 			// don't count items that are skipped (null data)
-			if (element && !element._view.skip) {
+			if (element && element._view && !element._view.skip) {
 				elements.push(element);
 			}
 		}
